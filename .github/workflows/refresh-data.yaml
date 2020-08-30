@@ -1,4 +1,4 @@
-name: Refresh data for macro dashboard
+name: refresh-data
 
 on:
   schedule:
