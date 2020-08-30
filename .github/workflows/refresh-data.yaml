@@ -15,7 +15,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install packages
-        run: Rscript -e 'install.packages(c("readabs", "here", "fst", "rmarkdown"), type = "binary")'
+        run: Rscript -e 'install.packages(c("readabs", "here", "readr", "rmarkdown"), type = "binary")'
       - name: Get data
         run: Rscript -e 'source(here::here("R", "refresh_cpi.R"), echo = TRUE)'
       - name: Render README

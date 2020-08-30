@@ -1,9 +1,9 @@
 library(readabs)
-library(fst)
+library(readr)
 library(here)
 
 cpi <- readabs::read_cpi()
 now <- .POSIXct(Sys.time(), "Australia/Melbourne")
 cpi$updated <- now
 
-fst::write_fst(cpi, path = here::here("data", "cpi.fst"))
+readr::write_csv(cpi, path = here::here("data", "cpi.csv"))
