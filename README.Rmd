@@ -25,4 +25,4 @@ cpi <- readr::read_csv(here::here("data", "cpi.csv"))
 updated <- unique(cpi$updated)
 ```
 
-Data last updated at `r updated` AEST.
+Data last updated at `r updated` AEST
