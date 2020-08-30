@@ -1,0 +1,26 @@
+name: Refresh data for macro dashboard
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  push:
+    branches:
+      - master
+
+jobs:
+  refresh-data:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - name: Install packages
+        run: Rscript -e 'install.packages(c("readabs", "here", "fst"), type = "binary")'
+      - name: Get data
+        run: Rscript -e 'source(here::here("R", "refresh_cpi.R"), echo = TRUE)'
+      - name: Commit
+        run: |
+          git config --global user.name 'Matt Cowgill'
+          git config --global user.email 'mattcowgill@github.com'
+          git add .
+          git commit -m 'refreshing data' || echo "No changes to commit"
+          git push || echo "No changes to commit"
