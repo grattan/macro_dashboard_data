@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 ```{r, include=FALSE}
 
-cpi <- fst::read_fst(here::here("data", "cpi.fst"))
+cpi <- readr::read_csv(here::here("data", "cpi.csv"))
 
 
 updated <- unique(cpi$updated)
