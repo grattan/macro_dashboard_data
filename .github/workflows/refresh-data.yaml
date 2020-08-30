@@ -19,7 +19,7 @@ jobs:
       - name: Get data
         run: Rscript -e 'source(here::here("R", "refresh_cpi.R"), echo = TRUE)'
       - name: Render README
-        run: Rscript -r 'rmarkdown::render(here::here("README.Rmd"))'
+        run: Rscript -e 'rmarkdown::render(here::here("README.Rmd"))'
       - name: Commit
         run: |
           git config --global user.name 'Matt Cowgill'
