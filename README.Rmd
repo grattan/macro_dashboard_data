@@ -21,7 +21,6 @@ knitr::opts_chunk$set(
 
 cpi <- readr::read_csv(here::here("data", "cpi.csv"))
 
-
 updated <- unique(cpi$updated)
 updated <- lubridate::with_tz(updated, "Australia/Melbourne")
 ```
