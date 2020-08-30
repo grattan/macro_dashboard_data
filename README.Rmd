@@ -1,0 +1,27 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# macro_dashboard_data
+
+<!-- badges: start -->
+  ![refresh-data status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
+<!-- badges: end -->
+
+```{r}
+
+cpi <- fst::read_fst(here::here("data", "cpi.fst"))
+
+updated <- unique(cpi$updated)
+```
+
+Data last updated at `r updated`.
