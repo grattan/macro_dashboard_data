@@ -17,11 +17,11 @@ knitr::opts_chunk$set(
   ![refresh-data status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
 <!-- badges: end -->
 
-```{r}
+```{r, include=FALSE}
 
 cpi <- fst::read_fst(here::here("data", "cpi.fst"))
 
 updated <- unique(cpi$updated)
 ```
 
-Data last updated at `r updated`.
+Data last updated at `r updated` AEST.

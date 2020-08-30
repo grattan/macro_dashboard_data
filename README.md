@@ -9,11 +9,4 @@
 status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
 <!-- badges: end -->
 
-``` r
-
-cpi <- fst::read_fst(here::here("data", "cpi.fst"))
-
-updated <- unique(cpi$updated)
-```
-
-Data last updated at 2020-08-30 14:29:31.
+Data last updated at 2020-08-30 14:37:16 AEST.
