@@ -9,4 +9,4 @@
 status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
 <!-- badges: end -->
 
-Data last updated at 2020-08-31 23:03:11 AEST.
+Data last updated at 2020-09-01 23:03:26 AEST.
