@@ -19,10 +19,9 @@ knitr::opts_chunk$set(
 
 ```{r, include=FALSE}
 
-cpi <- readr::read_csv(here::here("data", "cpi.csv"))
+last_refreshed <- readLines(here::here("last_refreshed.txt"))
 
-updated <- unique(cpi$updated)
-updated <- lubridate::with_tz(updated, "Australia/Melbourne")
+updated <- lubridate::with_tz(last_refreshed, "Australia/Melbourne")
 ```
 
 Data last updated at `r updated` AEST.

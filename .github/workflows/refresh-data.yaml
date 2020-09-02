@@ -17,7 +17,7 @@ jobs:
       - name: Install packages
         run: Rscript -e 'install.packages(c("readabs", "here", "readr", "rmarkdown", "lubridate"), type = "binary")'
       - name: Get data
-        run: Rscript -e 'source(here::here("R", "refresh_cpi.R"), echo = TRUE)'
+        run: Rscript -e 'source(here::here("R", "refresh_all.R"), echo = TRUE)'
       - name: Render README
         run: Rscript -e 'rmarkdown::render(here::here("README.Rmd"))'
       - name: Commit
