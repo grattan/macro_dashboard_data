@@ -2,7 +2,7 @@ name: refresh-data
 
 on:
   schedule:
-    - cron: "0 13 * * *"
+    - cron: "35 11/23 * * *"
   push:
     branches:
       - master
