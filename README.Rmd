@@ -24,4 +24,4 @@ last_refreshed <- readLines(here::here("last_refreshed.txt"))
 updated <- lubridate::with_tz(last_refreshed, "Australia/Melbourne")
 ```
 
-Data last updated at `r updated` AEST.
+Data last updated at `r updated` AEST
