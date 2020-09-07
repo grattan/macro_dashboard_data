@@ -26,33 +26,39 @@ latest_filepath <- file.path(corelogic_filepath, "corelogic_daily.xlsx")
 archive_filepath <- file.path(corelogic_filepath, "archive", 
                                paste0("corelogic_daily_", todays_date, ".xlsx"))
 
+latest_date <- read_excel(latest_filepath, skip = 3) %>%
+  filter(Date == max(Date)) %>%
+  pull(Date)
 
-download.file(url = corelogic_url, destfile = latest_filepath)
-
-file.copy(latest_filepath,
-          archive_filepath,
-          overwrite = TRUE)
-
-corelogic <- read_excel(latest_filepath, skip = 3)
-
-corelogic_old <- read_excel(file.path(corelogic_filepath, "corelogic_old.xlsx"),
-                            skip = 3)
-
-corelogic <- rbind(corelogic, corelogic_old)
-
-corelogic <- dplyr::distinct(corelogic)
-
-# Tidy Corelogic data -----
-
-corelogic <- corelogic %>%
-  rename(date = Date, 
-         sydney = starts_with("Sydney"),
-         melbourne = starts_with("Mel"),
-         brisbane = starts_with("Bris"),
-         adelaide = starts_with("Adel"),
-         perth = starts_with("Per"),
-         agg = contains("Aggregate")) %>%
-  mutate(date = as.Date(date)) 
-
-readr::write_csv(corelogic,
-                 here::here("data", "corelogic_daily.csv"))
+if (latest_date < Sys.Date()) {
+  
+  download.file(url = corelogic_url, destfile = latest_filepath)
+  
+  file.copy(latest_filepath,
+            archive_filepath,
+            overwrite = TRUE)
+  
+  corelogic <- read_excel(latest_filepath, skip = 3)
+  
+  corelogic_old <- read_excel(file.path(corelogic_filepath, "corelogic_old.xlsx"),
+                              skip = 3)
+  
+  corelogic <- rbind(corelogic, corelogic_old)
+  
+  corelogic <- dplyr::distinct(corelogic)
+  
+  # Tidy Corelogic data -----
+  
+  corelogic <- corelogic %>%
+    rename(date = Date, 
+           sydney = starts_with("Sydney"),
+           melbourne = starts_with("Mel"),
+           brisbane = starts_with("Bris"),
+           adelaide = starts_with("Adel"),
+           perth = starts_with("Per"),
+           agg = contains("Aggregate")) %>%
+    mutate(date = as.Date(date)) 
+  
+  readr::write_csv(corelogic,
+                   here::here("data", "corelogic_daily.csv"))
+}
