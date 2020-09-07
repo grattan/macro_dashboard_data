@@ -70,4 +70,6 @@ if (latest_date < Sys.Date()) {
     arrange(date) %>%
     distinct() %>%
     write_csv(here::here("last_updated.csv"))
+} else {
+  print("corelogic already up to date")
 }

@@ -36,4 +36,6 @@ if (new_date > old_date) {
     distinct() %>%
     write_csv(here::here("last_updated.csv")) 
 
+} else {
+  print("lfs monthly already up to date")
 }

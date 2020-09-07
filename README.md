@@ -9,11 +9,11 @@
 status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
 <!-- badges: end -->
 
-Data update script last run at 2020-09-07 11:25:25 AEST.
+Data update script last run at 2020-09-08 09:47:58 AEST.
 
 Data last updated at:
 
 | data        | date                |
 | :---------- | :------------------ |
-| corelogic   | 2020-09-07 11:35:19 |
-| lfs monthly | 2020-09-07 11:35:45 |
+| lfs monthly | 2020-09-07 21:35:45 |
+| corelogic   | 2020-09-08 09:39:06 |
