@@ -9,7 +9,7 @@
 status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
 <!-- badges: end -->
 
-Data update script last run at 2020-09-07 11:25:25 AEST.
+Data update script last run at 2020-09-07 21:47:27 AEST.
 
 Data last updated at:
 
