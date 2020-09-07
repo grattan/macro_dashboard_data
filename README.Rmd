@@ -29,5 +29,6 @@ last_updated <- readr::read_csv(here::here("last_updated.csv"))
 
 Data update script last run at `r last_run` AEST.
 
+
 Data last updated at:
 `r knitr::kable(last_updated)`
