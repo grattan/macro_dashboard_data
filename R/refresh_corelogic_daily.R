@@ -60,8 +60,8 @@ if (latest_date < Sys.Date()) {
            agg = contains("Aggregate")) %>%
     mutate(date = as.Date(date)) 
   
-  readr::write_csv(corelogic,
-                   here::here("data", "corelogic_daily.csv"))
+  saveRDS(corelogic,
+          here::here("data", "corelogic", "corelogic_daily.rds"))
   
   readr::read_csv(here::here("last_updated.csv")) %>%
     bind_rows(tibble(data = "corelogic", date = Sys.time())) %>%
