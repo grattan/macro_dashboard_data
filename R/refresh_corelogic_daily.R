@@ -5,6 +5,7 @@ library(lubridate)
 library(dplyr)
 library(stringr)
 library(RCurl)
+library(readr)
 
 todays_date <- Sys.Date()
 current_year <- year(todays_date)
@@ -61,4 +62,12 @@ if (latest_date < Sys.Date()) {
   
   readr::write_csv(corelogic,
                    here::here("data", "corelogic_daily.csv"))
+  
+  readr::read_csv(here::here("last_updated.csv")) %>%
+    bind_rows(tibble(data = "corelogic", date = Sys.time())) %>%
+    group_by(data) %>%
+    filter(date == max(date)) %>%
+    arrange(date) %>%
+    distinct() %>%
+    write_csv(here::here("last_updated.csv"))
 }

@@ -19,9 +19,15 @@ knitr::opts_chunk$set(
 
 ```{r, include=FALSE}
 
-last_refreshed <- readLines(here::here("last_refreshed.txt"))
+last_run <- readLines(here::here("last_refreshed.txt"))
 
-updated <- lubridate::with_tz(last_refreshed, "Australia/Melbourne")
+last_run <- lubridate::with_tz(last_run, "Australia/Melbourne")
+
+last_updated <- readr::read_csv(here::here("last_updated.csv"))
+
 ```
 
-Data last updated at `r updated` AEST
+Data update script last run at `r last_run` AEST.
+
+Data last updated at:
+`r knitr::kable(last_updated)`

@@ -27,5 +27,13 @@ if (new_date > old_date) {
     mutate_if(is.character, as.factor)
   
   saveRDS(lfs_m, here::here("data", "abs", "6202.rds"))
+  
+  readr::read_csv(here::here("last_updated.csv")) %>%
+    bind_rows(tibble(data = "lfs monthly", date = Sys.time())) %>%
+    group_by(data) %>%
+    filter(date == max(date)) %>%
+    arrange(date) %>%
+    distinct() %>%
+    write_csv(here::here("last_updated.csv")) 
 
 }
