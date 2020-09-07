@@ -4,6 +4,8 @@ library(here)
 
 raw_path <- here::here("data-raw", "abs")
 
+# Check to see if the release date differs in local & remote versions of
+# this file, chosen because of its small file size
 old_lfs_6202_11s <- read_abs_local("6202.0", "11a", 
                                    path = raw_path)
 
@@ -14,6 +16,9 @@ old_date <- max(old_lfs_6202_11s$date)
 new_date <- max(new_lfs_6202_11s$date)
 
 if (new_date > old_date) {
+  Lfs_11a <- read_abs("6202.0", "11a", check_local = FALSE, 
+           path = raw_path)
+  
   lfs_m <- read_abs("6202.0", check_local = FALSE)
   
   lfs_m <- lfs_m %>%
