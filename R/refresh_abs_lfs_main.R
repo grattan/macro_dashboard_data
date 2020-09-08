@@ -20,7 +20,9 @@ if (new_date > old_date) {
   Lfs_11a <- read_abs("6202.0", "11a", check_local = FALSE, 
            path = raw_path)
   
-  lfs_m <- read_abs("6202.0", check_local = FALSE)
+  lfs_m <- read_abs("6202.0", 
+                    tables = c("1", "12", "19", "22", "23", "24"),
+                    check_local = FALSE)
   
   lfs_m <- lfs_m %>%
     select(date, series, series_type, series_id, value) %>%
