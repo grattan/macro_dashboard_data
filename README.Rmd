@@ -31,6 +31,5 @@ last_updated$date <- lubridate::with_tz(last_updated$date, "Australia/Melbourne"
 
 Data update script last run at `r last_run` AEST.
 
-
 Data last updated at:
 `r knitr::kable(last_updated)`

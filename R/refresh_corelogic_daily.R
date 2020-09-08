@@ -6,6 +6,7 @@ library(dplyr)
 library(stringr)
 library(RCurl)
 library(readr)
+library(fst)
 
 todays_date <- Sys.Date()
 current_year <- year(todays_date)
@@ -60,8 +61,9 @@ if (latest_date < Sys.Date()) {
            agg = contains("Aggregate")) %>%
     mutate(date = as.Date(date)) 
   
-  saveRDS(corelogic,
-          here::here("data", "corelogic", "corelogic_daily.rds"))
+  fst::write_fst(corelogic,
+                 here::here("data", "corelogic", "corelogic_daily.fst"),
+                 compress = 100)
   
   readr::read_csv(here::here("last_updated.csv")) %>%
     bind_rows(tibble(data = "corelogic", date = Sys.time())) %>%
@@ -70,6 +72,8 @@ if (latest_date < Sys.Date()) {
     arrange(date) %>%
     distinct() %>%
     write_csv(here::here("last_updated.csv"))
+  
 } else {
   print("corelogic already up to date")
+  
 }

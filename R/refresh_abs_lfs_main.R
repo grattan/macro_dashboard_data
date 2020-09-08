@@ -1,6 +1,7 @@
 library(readabs)
 library(dplyr)
 library(here)
+library(fst)
 
 raw_path <- here::here("data-raw", "abs")
 
@@ -26,7 +27,9 @@ if (new_date > old_date) {
     filter(!is.na(value)) %>%
     mutate_if(is.character, as.factor)
   
-  saveRDS(lfs_m, here::here("data", "abs", "6202.rds"))
+  fst::write_fst(lfs_m, 
+                 here::here("data", "abs", "6202.fst"), 
+                 compress = 100)
   
   readr::read_csv(here::here("last_updated.csv")) %>%
     bind_rows(tibble(data = "lfs monthly", date = Sys.time())) %>%
@@ -34,7 +37,7 @@ if (new_date > old_date) {
     filter(date == max(date)) %>%
     arrange(date) %>%
     distinct() %>%
-    write_csv(here::here("last_updated.csv")) 
+    readr::write_csv(here::here("last_updated.csv")) 
 
 } else {
   print("lfs monthly already up to date")
