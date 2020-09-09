@@ -2,6 +2,7 @@ library(readabs)
 library(dplyr)
 library(here)
 library(fst)
+library(readr)
 
 raw_path <- here::here("data-raw", "abs")
 
@@ -29,10 +30,18 @@ if (new_date > old_date) {
     filter(!is.na(value)) %>%
     mutate_if(is.character, as.factor)
   
-  fst::write_fst(lfs_m, 
-                 here::here("data", "abs", "6202.fst"), 
-                 compress = 100)
+  lfs_m <- lfs_m %>%
+    mutate(table = paste0("lfs_m_", 
+                          readr::parse_number(as.character(table_title)))) %>%
+    select(-table_title) %>%
+    split(.$table)
   
+  purrr::walk2(.x = lfs_m, .y = names(lfs_m),
+              .f = ~write_fst(.x,
+                              here::here("data", "abs", paste0(.y, ".fst")),
+                              compress = 100)
+              )
+
   readr::read_csv(here::here("last_updated.csv")) %>%
     bind_rows(tibble(data = "lfs monthly", date = Sys.time())) %>%
     group_by(data) %>%
