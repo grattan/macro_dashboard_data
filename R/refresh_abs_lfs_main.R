@@ -25,7 +25,7 @@ if (new_date > old_date) {
                     check_local = FALSE)
   
   lfs_m <- lfs_m %>%
-    select(date, series, series_type, series_id, value) %>%
+    select(date, table_title, series, series_type, series_id, value) %>%
     filter(!is.na(value)) %>%
     mutate_if(is.character, as.factor)
   
