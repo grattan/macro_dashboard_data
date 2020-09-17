@@ -10,7 +10,7 @@ status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-da
 
 <!-- badges: end -->
 
-Data update script last run at 2020-09-17 11:58:27 AEST.
+Data update script last run at 2020-09-17 12:48:42 AEST.
 
 Data last updated at:
 
