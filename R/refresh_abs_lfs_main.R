@@ -22,7 +22,7 @@ if (new_date > old_date) {
            path = raw_path)
   
   lfs_m <- read_abs("6202.0", 
-                    tables = c("1", "12", "19", "22", "23", "24"),
+                    tables = c("1", "12", "19", "22", "24"),
                     check_local = FALSE)
   
   lfs_m <- lfs_m %>%
