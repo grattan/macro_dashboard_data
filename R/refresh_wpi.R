@@ -26,5 +26,7 @@ if (new_date > old_date) {
     arrange(date) %>%
     distinct() %>%
     readr::write_csv(here::here("last_updated.csv")) 
+} else {
+  print("wpi already up to date")
 }
 

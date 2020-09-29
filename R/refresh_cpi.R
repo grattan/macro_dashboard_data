@@ -48,5 +48,5 @@ if (new_date > old_date) {
     readr::write_csv(here::here("last_updated.csv")) 
   
 } else {
-  print("lfs monthly already up to date")
+  print("cpi already up to date")
 }
