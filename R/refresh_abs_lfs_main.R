@@ -42,6 +42,8 @@ if (new_date > old_date) {
                               here::here("data", "abs", paste0(.y, ".fst")),
                               compress = 100)
               )
+  
+  source(here::here("R", "refresh_abs_lfs_grossflows.R"))
 
   readr::read_csv(here::here("last_updated.csv")) %>%
     bind_rows(tibble(data = "lfs monthly", date = Sys.time())) %>%
