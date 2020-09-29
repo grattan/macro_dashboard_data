@@ -12,7 +12,7 @@ library(lubridate)
 library(httr)
 
 # Create directory for raw data ----
-gf_dir <-here::here("data-raw", "gross_flows")
+gf_dir <- tempdir()
 
 if (!dir.exists(gf_dir)) dir.create(gf_dir, recursive = T)
 
