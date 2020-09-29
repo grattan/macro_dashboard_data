@@ -11,7 +11,13 @@ old_date <- max(wpi_old$date)
 new_date <- max(wpi_new$date)
 
 if (new_date > old_date) {
-  fst::write_fst(wpi_new, here::here("data", "abs", "wpi_1.fst"))
+  
+  wpi <- wpi_new %>%
+    select(date, table_title, series, series_type, series_id, value) %>%
+    filter(!is.na(value)) %>%
+    mutate_if(is.character, as.factor)
+  
+  fst::write_fst(wpi, here::here("data", "abs", "wpi_1.fst"), compress = 100)
   
   readr::read_csv(here::here("last_updated.csv")) %>%
     bind_rows(tibble(data = "wpi", date = Sys.time())) %>%
