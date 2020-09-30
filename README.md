@@ -10,13 +10,13 @@ status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-da
 
 <!-- badges: end -->
 
-Data update script last run at 2020-09-29 14:28:38 AEST.
+Data update script last run at 2020-09-30 11:44:39 AEST.
 
 Data last updated at:
 
 | data        | date                |
 | :---------- | :------------------ |
 | lfs monthly | 2020-09-29 10:59:24 |
-| corelogic   | 2020-09-29 11:06:22 |
 | wpi         | 2020-09-29 13:21:51 |
 | cpi         | 2020-09-29 13:24:12 |
+| corelogic   | 2020-09-30 11:44:28 |
