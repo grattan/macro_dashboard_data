@@ -10,9 +10,9 @@ for (file in refresh_files) {
 
 # Compile all files into one
 
-files <- list.files(here::here("data"), recursive = T, full.names = T, include.dirs = F)
+files <- list.files(here::here("data"), pattern = ".fst",
+                    recursive = T, full.names = T, include.dirs = F)
 files <- files[!grepl("all_data", files)]
-files <- files[grepl(".fst", files)]
 
 all_data <- purrr::map(files, fst::read_fst)
 

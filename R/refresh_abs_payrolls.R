@@ -16,11 +16,16 @@ payrolls_dir <- here::here(
   "payrolls"
 )
 
-
 payrolls_series <- c(
   "industry_jobs", "industry_wages", "sa4_jobs", "sa3_jobs",
   "subindustry_jobs", "empsize_jobs"
 )
+
+read_payrolls_then_factor <- function(series, path) {
+  x <- readabs::read_payrolls(series = series, path = path)
+  x <- dplyr::mutate_if(x, is.character, as.factor)
+  x
+}
 
 # Download all payrolls data
 payrolls_list <- purrr::map(
@@ -28,7 +33,7 @@ payrolls_list <- purrr::map(
     "industry_jobs", "industry_wages", "sa4_jobs", "sa3_jobs",
     "subindustry_jobs", "empsize_jobs"
   ),
-  .f = readabs::read_payrolls,
+  .f = read_payrolls_then_factor,
   path = payrolls_dir
 )
 
