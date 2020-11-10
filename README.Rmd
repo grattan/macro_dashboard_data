@@ -28,6 +28,8 @@ last_updated <- readr::read_csv(here::here("last_updated.csv"))
 
 last_updated$date <- lubridate::with_tz(last_updated$date, "Australia/Melbourne")
 
+last_updated <- last_updated[rev(order(last_updated$date)),]
+
 ```
 
 Data update script last run at `r last_run` AEST.
