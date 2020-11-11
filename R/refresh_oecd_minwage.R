@@ -14,7 +14,8 @@ min2ave <- min2ave_file %>%
   janitor::clean_names() %>%
   dplyr::select(-time_format) %>%
   dplyr::mutate(across(c(obs_value, time), as.numeric)) %>%
-  dplyr::mutate(across(where(is.character), as.factor))
+  dplyr::mutate(across(where(is.character), as.factor)) %>%
+  dplyr::filter(.data$time >= 1985)
 
 min2ave_fst_path <- here::here("data", "oecd", "oecd_min2ave.fst")
 
