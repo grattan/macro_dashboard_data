@@ -16,7 +16,7 @@ min2ave <- min2ave_file %>%
   dplyr::mutate(across(c(obs_value, time), as.numeric)) %>%
   dplyr::mutate(across(where(is.character), as.factor))
 
-min2ave_fst_path <- here::here("data", "oecd", "min2ave.fst")
+min2ave_fst_path <- here::here("data", "oecd", "oecd_min2ave.fst")
 
 saved_min2ave <- fst::read_fst(min2ave_fst_path)
 
