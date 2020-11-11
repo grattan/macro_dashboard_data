@@ -3,6 +3,7 @@ library(dplyr)
 library(here)
 library(fst)
 library(janitor)
+library(countrycode)
 
 min2ave_file <- tempfile(fileext = ".xml")
 min2ave_url <- "https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/MIN2AVE/"
@@ -13,7 +14,8 @@ min2ave <- min2ave_file %>%
   dplyr::as_tibble() %>%
   janitor::clean_names() %>%
   dplyr::select(-time_format) %>%
-  dplyr::mutate(across(c(obs_value, time), as.numeric)) %>%
+  dplyr::mutate(across(c(obs_value, time), as.numeric),
+                country = countrycode(country, "wb", "country.name")) %>%
   dplyr::mutate(across(where(is.character), as.factor)) %>%
   dplyr::filter(.data$time >= 1985)
 
@@ -23,7 +25,7 @@ saved_min2ave <- fst::read_fst(min2ave_fst_path)
 
 matches_saved <- all.equal(min2ave, saved_min2ave, check.attributes = F)
 
-if (isFALSE(matches_saved)) {
+if (!isTRUE(matches_saved)) {
   fst::write_fst(min2ave, path = min2ave_fst_path)
   
   readr::read_csv(here::here("last_updated.csv")) %>%
