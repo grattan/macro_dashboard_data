@@ -16,21 +16,27 @@ old_date <- max(old_cpi_1$date)
 new_date <- max(new_cpi_1$date)
 
 if (new_date > old_date) {
-  cpi <- read_abs("6401.0", 
-                    tables = c("1", "3", "7", "8"),
-                    path = raw_path,
-                    check_local = FALSE)
   
-  cpi <- cpi %>%
-    select(date, table_title, series, series_type, series_id, value) %>%
-    filter(!is.na(value)) %>%
-    mutate_if(is.character, as.factor)
+  cpi_tables <- c("1", "3", "7", "8")
   
-   cpi <- cpi %>%
-    mutate(table = paste0("cpi_", 
-                          readr::parse_number(as.character(table_title)))) %>%
-    select(-table_title) %>%
-    split(.$table)
+  cpi <- purrr::map(
+    .x = cpi_tables,
+    .f = read_abs,
+    cat_no = "6401.0",
+    path = raw_path,
+    check_local = FALSE
+  )
+  
+  cpi <- setNames(cpi, paste0("cpi_", cpi_tables))
+  
+  cpi <- purrr::imap(cpi,
+            .f = ~.x %>%
+              select(date, series, series_type, series_id, value) %>%
+              filter(!is.na(value)) %>%
+              mutate_if(is.character, as.factor) %>%
+              mutate(table = paste0("cpi_", .y))
+            )
+  
   
   purrr::walk2(.x = cpi, .y = names(cpi),
                .f = ~fst::write_fst(.x,
