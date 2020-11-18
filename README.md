@@ -10,13 +10,13 @@ status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-da
 
 <!-- badges: end -->
 
-Data update script last run at 2020-11-18 13:51:55 AEST.
+Data update script last run at 2020-11-18 02:51:55 AEST.
 
 Data last updated at:
 
 | data           | date                |
 | :------------- | :------------------ |
-| wpi            | 2020-11-18 12:06:34 |
+| wpi            | 2020-11-18 14:45:31 |
 | corelogic      | 2020-11-18 12:06:11 |
 | payrolls       | 2020-11-17 12:06:26 |
 | rba\_forecasts | 2020-11-15 12:05:26 |
