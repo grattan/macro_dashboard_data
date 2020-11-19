@@ -2,7 +2,6 @@ library(readrba)
 library(dplyr)
 library(here)
 library(fst)
-library(auseconhist)
 
 monthly_yields <- read_rba(series_id = 
                              c("FCMYGBAG2",	"FCMYGBAG3",	"FCMYGBAG5",
