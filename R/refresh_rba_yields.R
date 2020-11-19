@@ -3,6 +3,7 @@ library(dplyr)
 library(here)
 library(fst)
 
+
 monthly_yields <- read_rba(series_id = 
                              c("FCMYGBAG2",	"FCMYGBAG3",	"FCMYGBAG5",
                                "FCMYGBAG10",	"FCMYGBAGI",	"FCMYGBNT3",
