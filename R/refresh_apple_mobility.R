@@ -3,19 +3,23 @@ library(fst)
 library(here)
 # Get data ----
 dates <- seq.Date(Sys.Date(), Sys.Date() - 7, by = "-1 day")
-
-urls <- paste0("https://covid19-static.cdn-apple.com/covid19-mobility-data/2021HotfixDev21/v3/en-us/applemobilitytrends-",
+days <- format(dates, "%d")
+urls <- paste0("https://covid19-static.cdn-apple.com/covid19-mobility-data/2021HotfixDev",
+               # "21",
+               days,
+               "/v3/en-us/applemobilitytrends-",
                dates, 
                ".csv")
 urls_exist <- RCurl::url.exists(urls)
-working_url <- urls[urls_exist == TRUE] 
-filename <- here::here("data-raw", "apple", basename(working_url))
+working_urls <- urls[urls_exist == TRUE] 
+latest_working_url <- sort(working_urls, decreasing = TRUE)[1]
+filename <- here::here("data-raw", "apple", basename(latest_working_url))
 
 if (!file.exists(filename)) {
   unlink(here::here("data-raw", "apple"), recursive = TRUE)
   dir.create(here::here("data-raw", "apple"))
   
-  download.file(url = working_url,
+  download.file(url = latest_working_url,
                 destfile = filename)
   
   apple_mobility <- read_csv(filename)
@@ -29,6 +33,8 @@ if (!file.exists(filename)) {
   fst::write_fst(apple_mobility, here::here("data", "apple",
                                             "apple_mobility.fst"))  
   
+  print(paste0("Latest Apple mobility data is from ",
+        names(apple_mobility)[length(apple_mobility)]))
   
   readr::read_csv(here::here("last_updated.csv")) %>%
     bind_rows(tibble(data = "apple_mobility", date = Sys.time())) %>%
