@@ -15,7 +15,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install packages
-        run: Rscript -e 'install.packages(c("here", "readr", "rmarkdown", "lubridate", "fst", "remotes", "readxl", "dplyr", "janitor", "httr", "readsdmx", "countrycode", "RCurl"), type = "binary")'
+        run: Rscript -e 'install.packages(c("here", "readr", "rmarkdown", "lubridate", "fst", "remotes", "readxl", "tidyr", "dplyr", "janitor", "httr", "readsdmx", "countrycode", "RCurl"), type = "binary")'
       - name: Install readabs
         run: Rscript -e 'remotes::install_github("mattcowgill/readabs")'
       - name: Install readrba
