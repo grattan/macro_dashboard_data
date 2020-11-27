@@ -28,6 +28,12 @@ detailed_yields <- detailed_yields %>%
   mutate(maturity_date = lubridate::dmy(maturity_date)) %>%
   select(date, value, maturity_date)
 
+official_rates <- readrba::read_rba(table_no = "f13") %>%
+  filter(!grepl("Minimum Target Rate", series)) %>%
+  mutate_if(is.character, as.factor)
+
+
+# Save FST files ----
 fst::write_fst(monthly_yields,
                here::here("data", "rba", "rba_monthly_yields.fst"),
                compress = 100)
@@ -39,6 +45,10 @@ fst::write_fst(daily_yields,
 fst::write_fst(detailed_yields,
                here::here("data", "rba", "rba_detailed_yields.fst"))
 
+fst::write_fst(official_rates,
+               here::here("data", "rba", "rba_official_rates.fst"))
+
+# Update 'last updated' ----
 readr::read_csv(here::here("last_updated.csv")) %>%
   bind_rows(tibble(data = "rba_yields", date = Sys.time())) %>%
   group_by(data) %>%
