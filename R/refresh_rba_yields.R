@@ -21,12 +21,11 @@ detailed_yields <- readrba::read_rba(table_no = c("f16", "f16"),
                                      cur_hist = c("current", "historical"))
 
 detailed_yields <- detailed_yields %>%
-  filter(!grepl("Indexed", series)) %>%
   tidyr::separate(description,
                   into = c("bond_num", "coupon", "maturity_date"),
                   sep = " - ") %>%
   mutate(maturity_date = lubridate::dmy(maturity_date)) %>%
-  select(date, value, maturity_date)
+  select(date, value, maturity_date, series)
 
 official_rates <- readrba::read_rba(table_no = "f13") %>%
   filter(!grepl("Minimum Target Rate", series)) %>%
