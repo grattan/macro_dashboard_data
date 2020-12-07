@@ -1,12 +1,14 @@
 library(RCurl)
 library(fst)
 library(here)
+library(readr)
+library(dplyr)
 # Get data ----
 dates <- seq.Date(Sys.Date(), Sys.Date() - 7, by = "-1 day")
 days <- format(dates, "%d")
-urls <- paste0("https://covid19-static.cdn-apple.com/covid19-mobility-data/2021HotfixDev",
+urls <- paste0("https://covid19-static.cdn-apple.com/covid19-mobility-data/2022HotfixDev15",
                # "21",
-               days,
+               # days,
                "/v3/en-us/applemobilitytrends-",
                dates, 
                ".csv")
