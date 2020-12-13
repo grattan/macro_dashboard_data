@@ -1,27 +1,32 @@
-library(RCurl)
+library(curl)
 library(fst)
 library(here)
 library(readr)
 library(dplyr)
+
+# Find right URL ----
+# Code via Kieran Healy
+# https://kieranhealy.org/blog/archives/2020/05/23/get-apples-mobility-data/
+
+get_apple_url <- function(cdn_url = "https://covid19-static.cdn-apple.com",
+                          json_file = "covid19-mobility-data/current/v3/index.json") {
+  tf <- tempfile(fileext = ".json")
+  curl::curl_download(paste0(cdn_url, "/", json_file), tf)
+  json_data <- jsonlite::fromJSON(tf)
+  paste0(cdn_url, json_data$basePath, json_data$regions$`en-us`$csvPath)
+}
+
+apple_url <- get_apple_url()
 # Get data ----
-dates <- seq.Date(Sys.Date(), Sys.Date() - 7, by = "-1 day")
-days <- format(dates, "%d")
-urls <- paste0("https://covid19-static.cdn-apple.com/covid19-mobility-data/2022HotfixDev15",
-               # "21",
-               # days,
-               "/v3/en-us/applemobilitytrends-",
-               dates, 
-               ".csv")
-urls_exist <- RCurl::url.exists(urls)
-working_urls <- urls[urls_exist == TRUE] 
-latest_working_url <- sort(working_urls, decreasing = TRUE)[1]
-filename <- here::here("data-raw", "apple", basename(latest_working_url))
+
+
+filename <- here::here("data-raw", "apple", basename(apple_url))
 
 if (!file.exists(filename)) {
   unlink(here::here("data-raw", "apple"), recursive = TRUE)
   dir.create(here::here("data-raw", "apple"))
   
-  download.file(url = latest_working_url,
+  download.file(url = apple_url,
                 destfile = filename)
   
   apple_mobility <- read_csv(filename)
