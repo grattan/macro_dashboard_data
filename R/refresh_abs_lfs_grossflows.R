@@ -10,52 +10,10 @@ library(fst)
 library(janitor)
 library(lubridate)
 library(httr)
+library(readabs)
 
-# Create directory for raw data ----
-gf_dir <- tempdir()
-
-if (!dir.exists(gf_dir)) dir.create(gf_dir, recursive = T)
-
-# Form URLs -----
-# First try URL for previous month (latest data will always be from prev month
-# at latest), then try the month before that
-
-last_month <- tolower(month(Sys.Date() - months(1), label = T))
-month_before_last <- tolower(month(Sys.Date() - months(2), label = T))
-year <- year(Sys.Date())
-base_url <- "https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/"
-
-gf_url_1 <- paste0(
-  base_url,
-  last_month,
-  "-",
-  year,
-  "/GM1.xlsx"
-)
-
-gf_url_2 <- paste0(
-  base_url,
-  month_before_last,
-  "-",
-  year,
-  "/GM1.xlsx"
-)
-
-url_1_works <- grepl(
-  "office",
-  httr::HEAD(gf_url_1)$headers$`content-type`
-)
-
-gf_url <- ifelse(isTRUE(url_1_works),
-  gf_url_1,
-  gf_url_2
-)
-
-
-# Download gross flows Excel sheet -----
-gf_file <- file.path(gf_dir, "GM1.xlsx")
-
-download.file(gf_url, gf_file)
+# Download gross flows ----
+gf_file <- download_abs_data_cube("labour-force-australia", "GM1")
 
 # Load gross flows Excel sheet ------
 gf <- read_excel(gf_file, sheet = "Data 1", skip = 3)
