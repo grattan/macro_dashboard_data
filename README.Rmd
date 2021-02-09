@@ -13,12 +13,25 @@ knitr::opts_chunk$set(
 
 # macro_dashboard_data
 
-
 <!-- badges: start -->
-  ![refresh-data status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
-  
-  
+
+![refresh-data status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-data/badge.svg)
+
 <!-- badges: end -->
+
+# About this repo
+
+This repository contains various Australian macroeconomic data, along with the scripts needed to update that data. The scripts are set to execute daily via GitHub Actions, which updates the data.
+
+The data is used by the Grattan macro dashboard.
+
+-   [Dashboard repo](https://github.com/grattan/macrodashboard)
+
+-   [Live dashboard](https://mattcowgill.shinyapps.io/macrodashboard/)
+
+# Updates to this repo
+
+The table below provides information about when the data in this repository was last updated.
 
 ```{r, include=FALSE}
 
@@ -36,5 +49,4 @@ last_updated <- last_updated[rev(order(last_updated$date)),]
 
 Data update script last run at `r last_run` AEST.
 
-Data last updated at:
-`r knitr::kable(last_updated)`
+Data last updated at: `r knitr::kable(last_updated)`

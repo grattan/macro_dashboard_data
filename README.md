@@ -10,12 +10,29 @@ status](https://github.com/MattCowgill/macro_dashboard_data/workflows/refresh-da
 
 <!-- badges: end -->
 
-Data update script last run at 2021-02-09 12:49:27 AEST.
+# About this repo
+
+This repository contains various Australian macroeconomic data, along
+with the scripts needed to update that data. The scripts are set to
+execute daily via GitHub Actions, which updates the data.
+
+The data is used by the Grattan macro dashboard.
+
+-   [Dashboard repo](https://github.com/grattan/macrodashboard)
+
+-   [Live dashboard](https://mattcowgill.shinyapps.io/macrodashboard/)
+
+# Updates to this repo
+
+The table below provides information about when the data in this
+repository was last updated.
+
+Data update script last run at 2021-02-09 01:49:27 AEST.
 
 Data last updated at:
 
 | data            | date                |
-| :-------------- | :------------------ |
+|:----------------|:--------------------|
 | rba\_yields     | 2021-02-09 12:49:19 |
 | corelogic       | 2021-02-09 11:34:23 |
 | apple\_mobility | 2021-02-09 11:34:21 |
