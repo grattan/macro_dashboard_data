@@ -63,7 +63,8 @@ compile_corelogic <- function(path_to_corelogic_files) {
   df <- df %>%
     group_by(date) %>%
     filter(obs_date == max(obs_date)) %>%
-    ungroup() 
+    ungroup() %>%
+    select(-obs_date)
   
   df
 }
