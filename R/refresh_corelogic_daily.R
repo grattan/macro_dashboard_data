@@ -26,30 +26,17 @@ corelogic_url <- ifelse(RCurl::url.exists(corelogic_current_url),
 corelogic_filepath <- here::here("data-raw", "corelogic")
 latest_filepath <- file.path(corelogic_filepath, "corelogic_daily.xlsx")
 archive_filepath <- file.path(corelogic_filepath, "archive", 
-                               paste0("corelogic_daily_", todays_date, ".xlsx"))
+                              paste0("corelogic_daily_", todays_date, ".xlsx"))
 
-latest_date <- read_excel(latest_filepath, skip = 3) %>%
-  filter(Date == max(Date)) %>%
-  pull(Date)
+download.file(url = corelogic_url, destfile = latest_filepath)
 
-if (latest_date < Sys.Date()) {
-  
-  download.file(url = corelogic_url, destfile = latest_filepath)
-  
-  file.copy(latest_filepath,
-            archive_filepath,
-            overwrite = TRUE)
-  
-  corelogic <- read_excel(latest_filepath, skip = 3)
-  
-  corelogic_old <- read_excel(file.path(corelogic_filepath, "corelogic_old.xlsx"),
-                              skip = 3)
-  
-  corelogic <- rbind(corelogic, corelogic_old)
-  
-  corelogic <- dplyr::distinct(corelogic)
-  
-  # Tidy Corelogic data -----
+file.copy(latest_filepath,
+          archive_filepath,
+          overwrite = TRUE)
+
+read_corelogic <- function(path) {
+  corelogic <- readxl::read_excel(path = path,
+                                  skip = 3)
   
   corelogic <- corelogic %>%
     rename(date = Date, 
@@ -59,21 +46,39 @@ if (latest_date < Sys.Date()) {
            adelaide = starts_with("Adel"),
            perth = starts_with("Per"),
            agg = contains("Aggregate")) %>%
-    mutate(date = as.Date(date)) 
+    mutate(date = as.Date(date),
+           obs_date = max(date)) 
   
-  fst::write_fst(corelogic,
-                 here::here("data", "corelogic", "corelogic_daily.fst"),
-                 compress = 100)
-  
-  readr::read_csv(here::here("last_updated.csv")) %>%
-    bind_rows(tibble(data = "corelogic", date = Sys.time())) %>%
-    group_by(data) %>%
-    filter(date == max(date)) %>%
-    arrange(date) %>%
-    distinct() %>%
-    write_csv(here::here("last_updated.csv"))
-  
-} else {
-  print("corelogic already up to date")
-  
+  corelogic  
 }
+
+
+compile_corelogic <- function(path_to_corelogic_files) {
+  
+  files <- list.files(path_to_corelogic_files,
+                      full.names = TRUE)
+  
+  df <- purrr::map_dfr(.x = files, .f = read_corelogic)
+  
+  df <- df %>%
+    group_by(date) %>%
+    filter(obs_date == max(obs_date)) %>%
+    ungroup() 
+  
+  df
+}
+
+corelogic <- compile_corelogic(here::here(corelogic_filepath, "archive"))
+
+fst::write_fst(corelogic,
+               here::here("data", "corelogic", "corelogic_daily.fst"),
+               compress = 100)
+
+readr::read_csv(here::here("last_updated.csv")) %>%
+  bind_rows(tibble(data = "corelogic", date = Sys.time())) %>%
+  group_by(data) %>%
+  filter(date == max(date)) %>%
+  arrange(date) %>%
+  distinct() %>%
+  write_csv(here::here("last_updated.csv"))
+
