@@ -17,7 +17,7 @@ payrolls_dir <- here::here(
 )
 
 payrolls_series <- c(
-  "industry_jobs", "industry_wages", "sa4_jobs", "sa3_jobs",
+  "industry_jobs",  "sa4_jobs", "sa3_jobs",
   "subindustry_jobs", "empsize_jobs"
 )
 
@@ -30,7 +30,7 @@ read_payrolls_then_factor <- function(series, path) {
 # Download all payrolls data
 payrolls_list <- purrr::map(
   .x = c(
-    "industry_jobs", "industry_wages", "sa4_jobs", "sa3_jobs",
+    "industry_jobs",  "sa4_jobs", "sa3_jobs",
     "subindustry_jobs", "empsize_jobs"
   ),
   .f = read_payrolls_then_factor,
