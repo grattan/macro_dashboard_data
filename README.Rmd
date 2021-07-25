@@ -20,7 +20,6 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 # About this repo
-
 This repository contains various Australian macroeconomic data, along with the scripts needed to update that data. The scripts are set to execute daily via GitHub Actions, which updates the data.
 
 The data is used by the Grattan macro dashboard.
