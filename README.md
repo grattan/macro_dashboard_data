@@ -18,25 +18,25 @@ execute daily via GitHub Actions, which updates the data.
 
 The data is used by the Grattan macro dashboard.
 
-  - [Dashboard repo](https://github.com/grattan/macrodashboard)
+-   [Dashboard repo](https://github.com/grattan/macrodashboard)
 
-  - [Live dashboard](https://mattcowgill.shinyapps.io/macrodashboard/)
+-   [Live dashboard](https://mattcowgill.shinyapps.io/macrodashboard/)
 
 # Updates to this repo
 
 The table below provides information about when the data in this
 repository was last updated.
 
-Data update script last run at 2021-07-23 12:04:03 AEST.
+Data update script last run at 2021-07-26 09:47:09 AEST.
 
 Data last updated at:
 
 | data            | date                |
-| :-------------- | :------------------ |
-| rba\_yields     | 2021-07-23 12:03:57 |
+|:----------------|:--------------------|
+| rba\_yields     | 2021-07-26 09:47:05 |
+| corelogic       | 2021-07-26 09:45:42 |
+| apple\_mobility | 2021-07-26 09:28:41 |
 | rba\_inf\_exp   | 2021-07-23 12:02:07 |
-| corelogic       | 2021-07-23 12:01:40 |
-| apple\_mobility | 2021-07-23 10:48:16 |
 | payrolls        | 2021-07-22 12:03:55 |
 | lfs monthly     | 2021-07-15 12:12:38 |
 | wpi             | 2021-05-19 12:29:13 |
