@@ -27,18 +27,18 @@ The data is used by the Grattan macro dashboard.
 The table below provides information about when the data in this
 repository was last updated.
 
-Data update script last run at 2022-02-06 12:02:41 AEST.
+Data update script last run at 2022-02-06 13:19:04 AEST.
 
 Data last updated at:
 
 | data             | date                |
 | :--------------- | :------------------ |
-| rba\_yields      | 2022-02-06 12:02:36 |
-| rba\_mort\_repay | 2022-02-06 12:02:10 |
-| rba\_credit      | 2022-02-06 12:01:51 |
-| corelogic        | 2022-02-06 12:01:32 |
+| rba\_yields      | 2022-02-06 13:18:58 |
+| rba\_mort\_repay | 2022-02-06 13:18:25 |
+| rba\_credit      | 2022-02-06 13:18:17 |
+| corelogic        | 2022-02-06 13:18:01 |
+| abs comits       | 2022-02-06 13:17:08 |
 | apple\_mobility  | 2022-02-06 12:01:13 |
-| abs comits       | 2022-02-06 12:00:36 |
 | rba\_inf\_exp    | 2022-02-04 11:56:19 |
 | rba\_forecasts   | 2022-02-04 11:56:18 |
 | cpi              | 2022-01-25 12:04:51 |
