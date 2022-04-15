@@ -27,24 +27,22 @@ The data is used by the Grattan macro dashboard.
 The table below provides information about when the data in this
 repository was last updated.
 
-Data update script last run at 2022-04-14 13:00:50 AEST.
+Data update script last run at 2022-04-15 15:42:13 AEST.
 
 Data last updated at:
 
 | data             | date                |
 | :--------------- | :------------------ |
-| rba\_yields      | 2022-04-14 13:00:42 |
-| rba\_mort\_repay | 2022-04-14 13:00:20 |
-| rba\_credit      | 2022-04-14 13:00:10 |
-| corelogic        | 2022-04-14 12:59:51 |
+| rba\_yields      | 2022-04-15 15:42:07 |
+| rba\_mort\_repay | 2022-04-15 15:41:34 |
+| rba\_credit      | 2022-04-15 15:41:05 |
+| corelogic        | 2022-04-15 15:40:47 |
+| abs comits       | 2022-04-15 15:39:44 |
 | lfs monthly      | 2022-04-14 12:59:14 |
-| abs comits       | 2022-04-14 12:57:15 |
+| apple\_mobility  | 2022-04-14 11:23:46 |
 | payrolls         | 2022-04-07 12:45:59 |
 | rba\_inf\_exp    | 2022-04-01 12:22:14 |
 | wpi              | 2022-02-23 12:05:52 |
 | rba\_forecasts   | 2022-02-04 11:56:18 |
 | cpi              | 2022-01-25 12:04:51 |
 | oecd\_minwages   | 2021-09-09 10:50:38 |
-
-# Apple data note
-Apple ceased publishing mobility data on 14 April, so it is no longer included in this repository.
