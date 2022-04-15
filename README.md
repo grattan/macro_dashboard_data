@@ -39,10 +39,12 @@ Data last updated at:
 | corelogic        | 2022-04-14 12:59:51 |
 | lfs monthly      | 2022-04-14 12:59:14 |
 | abs comits       | 2022-04-14 12:57:15 |
-| apple\_mobility  | 2022-04-14 11:23:46 |
 | payrolls         | 2022-04-07 12:45:59 |
 | rba\_inf\_exp    | 2022-04-01 12:22:14 |
 | wpi              | 2022-02-23 12:05:52 |
 | rba\_forecasts   | 2022-02-04 11:56:18 |
 | cpi              | 2022-01-25 12:04:51 |
 | oecd\_minwages   | 2021-09-09 10:50:38 |
+
+# Apple data note
+Apple ceased publishing mobility data on 14 April, so it is no longer included in this repository.
