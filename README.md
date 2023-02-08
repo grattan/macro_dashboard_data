@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# macro\_dashboard\_data
+# macro_dashboard_data
 
 <!-- badges: start -->
 
@@ -18,31 +18,30 @@ execute daily via GitHub Actions, which updates the data.
 
 The data is used by the Grattan macro dashboard.
 
-  - [Dashboard repo](https://github.com/grattan/macrodashboard)
+- [Dashboard repo](https://github.com/grattan/macrodashboard)
 
-  - [Live dashboard](https://mattcowgill.shinyapps.io/macrodashboard/)
+- [Live dashboard](https://mattcowgill.shinyapps.io/macrodashboard/)
 
 # Updates to this repo
 
 The table below provides information about when the data in this
 repository was last updated.
 
-Data update script last run at 2022-10-18 13:03:01 AEST.
+Data update script last run at 2023-02-08 11:24:09 AEST.
 
 Data last updated at:
 
-| data             | date                |
-| :--------------- | :------------------ |
-| rba\_yields      | 2022-10-18 13:02:53 |
-| rba\_mort\_repay | 2022-10-18 13:02:29 |
-| rba\_credit      | 2022-10-18 13:02:18 |
-| corelogic        | 2022-10-18 13:02:01 |
-| abs comits       | 2022-10-18 13:00:53 |
-| payrolls         | 2022-10-13 12:55:35 |
-| rba\_inf\_exp    | 2022-10-04 12:54:27 |
-| lfs monthly      | 2022-09-15 12:04:18 |
-| oecd\_minwages   | 2022-09-07 11:58:32 |
-| wpi              | 2022-08-17 11:57:08 |
-| rba\_forecasts   | 2022-08-05 11:43:42 |
-| cpi              | 2022-07-27 11:48:12 |
-| apple\_mobility  | 2022-04-14 11:23:46 |
+| data           | date                |
+|:---------------|:--------------------|
+| rba_yields     | 2023-02-08 11:24:06 |
+| rba_mort_repay | 2023-02-08 11:23:53 |
+| rba_credit     | 2023-02-08 11:23:42 |
+| corelogic      | 2023-02-08 11:23:31 |
+| abs comits     | 2023-02-08 11:23:00 |
+| rba_inf_exp    | 2023-02-08 11:16:22 |
+| wpi            | 2023-02-08 11:15:34 |
+| rba_forecasts  | 2023-02-08 11:14:41 |
+| cpi            | 2023-02-08 11:14:29 |
+| payrolls       | 2023-02-08 11:12:53 |
+| lfs monthly    | 2023-02-08 11:12:28 |
+| oecd_minwages  | 2022-09-07 11:58:32 |
